@@ -1,5 +1,7 @@
 Comma: a super simple comment server for static websites, in go
 
+This means your website is no longer purely static, but it's a simple, fairly pragmatic solution to dynamically save and load comments (using javascript)
+
 # API
 
 * GET /foo/bar/whatever/my-post-slug
@@ -28,3 +30,26 @@ Integrating this in your website takes less than 100 lines of javascript.
 [Here's how I do it on my blog](https://github.com/Dieterbe/hugo-theme-blog/blob/master/layouts/partials/comments.html)
 
 See it in action on [dieter.plaetinck.be](http://dieter.plaetinck.be/)
+
+## How to run
+
+I use a systemd unit like this:
+```
+[Unit]
+Description=comma backend
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/home/dieter/comma /home/dieter/<comments directory> :<port> [form value for "special" form fields]
+Restart=always
+RestartSec=1
+User=dieter
+Group=dieter
+
+[Install]
+WantedBy=graphical.target
+```
+
+the optional "special" argument is a basic spam prevention mechanism. if the value is provided, and the "special" form value doesn't match this value,
+the comment is rejected. 
