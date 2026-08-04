@@ -7,7 +7,7 @@ RUN go mod download
 COPY src/* .
 
 RUN CGO_ENABLED=0 GOOS=linux go build -trimpath \
-    -ldflags="-s -w -X main.version=${VERSION}" -o /out/comma .
+    -ldflags="-s -w" -o /out/comma .
 
 FROM alpine:3.20
 RUN mkdir /data && adduser -D -u 10001 app && chown app:app /data
