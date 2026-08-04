@@ -29,7 +29,7 @@ Integrating this in your website takes less than 100 lines of javascript.
 You can either:
 
 * use jquery, like [on my old blog](https://github.com/Dieterbe/hugo-theme-blog/blob/master/layouts/partials/comments.html)
-* use pure javascript, like [on my new blog](https://github.com/Dieterbe/dieterblog/blob/master/layouts/partials/comments.html)
+* use pure javascript, like [on my new blog](https://github.com/Dieterbe/dieterblog/blob/master/layouts/_partials/comments.html)
 
 
 See it in action on [dieter.plaetinck.be](http://dieter.plaetinck.be/)
