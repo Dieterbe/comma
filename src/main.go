@@ -26,6 +26,11 @@ func main() {
 	path = strings.TrimSuffix(os.Args[1], "/")
 
 	addr = os.Args[2]
+
+	if !strings.Contains(addr, ":") {
+		addr = ":" + addr
+	}
+
 	fmt.Println("looking for comments in", path)
 	fmt.Println("will listen for http traffic on", addr)
 	if len(os.Args) == 4 {
@@ -44,7 +49,10 @@ func main() {
 		),
 	),
 	)
-	http.ListenAndServe(addr, nil)
+	if err := http.ListenAndServe(addr, nil); err != nil {
+		fmt.Fprintln(os.Stderr, "server error:", err)
+		os.Exit(1)
+	}
 }
 
 func handlePost(w http.ResponseWriter, r *http.Request) {
