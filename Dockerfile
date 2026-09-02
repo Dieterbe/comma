@@ -9,7 +9,7 @@ COPY src/* .
 RUN CGO_ENABLED=0 GOOS=linux go build -trimpath \
     -ldflags="-s -w" -o /out/comma .
 
-FROM alpine:3.20
+FROM alpine:3.24
 RUN mkdir /data && adduser -D -u 10001 app && chown app:app /data
 
 COPY --from=build /out/comma /usr/local/bin/comma
