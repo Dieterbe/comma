@@ -36,6 +36,8 @@ See it in action on [dieter.plaetinck.be](http://dieter.plaetinck.be/)
 
 ## How to run
 
+### SystemD
+
 I use a systemd unit like this:
 ```
 [Unit]
@@ -56,3 +58,8 @@ WantedBy=graphical.target
 
 the optional "special" argument is a basic spam prevention mechanism. if the value is provided, and the "special" form value doesn't match this value,
 the comment is rejected. 
+
+### Docker
+
+use `ghcr.io/dieterbe/comma`
+with every release tag, an image is automatically built and pushed.
